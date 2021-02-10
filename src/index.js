@@ -11,7 +11,7 @@ app.use(express.json()); // added body key to req
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: "https://devojyoti-login-frontend.herokuapp.com/", //"https://devojyoti-login-frontend.herokuapp.com/"
   })
 );
 app.use(
@@ -115,4 +115,4 @@ app.get("/userinfo", AuthMiddleware, async (req, res) => {
   res.send({ userName: user.userName });
 });
 
-app.listen(9999);
+app.listen(process.env.PORT);
