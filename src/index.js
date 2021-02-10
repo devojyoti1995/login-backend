@@ -11,7 +11,7 @@ app.use(express.json()); // added body key to req
 app.use(
   cors({
     credentials: true,
-    origin: "https://devojyoti-login-frontend.herokuapp.com/", //"https://devojyoti-login-frontend.herokuapp.com/"
+    origin: "http://localhost:3000", //"https://devojyoti-login-frontend.herokuapp.com/"
   })
 );
 app.use(
@@ -23,8 +23,7 @@ app.use(
 
 // connect
 
-const mongourl =
-  "mongodb+srv://Devojyoti:Devo@1995@cluster0.whpdu.mongodb.net/UserInfo?retryWrites=true&w=majority";
+const mongourl = "mongodb://localhost:27017/UserInfo"; //"mongodb+srv://Devojyoti:Devo@1995@cluster0.whpdu.mongodb.net/UserInfo?retryWrites=true&w=majority";
 mongoose
   .connect(mongourl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
@@ -115,4 +114,4 @@ app.get("/userinfo", AuthMiddleware, async (req, res) => {
   res.send({ userName: user.userName });
 });
 
-app.listen(process.env.PORT);
+app.listen(9999);
